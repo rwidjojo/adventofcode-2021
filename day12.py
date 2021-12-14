@@ -13,19 +13,23 @@ for row in data:
 
  
 def traverse_one(curr, seen):
+
+    # from a starting point A, we count how many possible paths
+    # if the next cave we choose is node "curr"
     
     # if current node is end, this is a valid route
-    # add this to counter
+    # add this to counter, and stop recursion
     if curr == 'end':
         return 1
     
     # if current node is start but we have gone somewhere
     # (therefore seen is not an empty set), this is invalid
+    # stop recursion
     if curr == 'start' and seen:
         return 0
     
     # if current node is lowercase but already exists before
-    # invalid route, skipping
+    # invalid route, skipping, stop recursion here
     if curr.islower() and curr in seen:
         return 0
     
@@ -44,22 +48,42 @@ def traverse_one(curr, seen):
 
 def traverse_two(curr, seen, duplicate):
 
+    # from a starting point A, we count how many possible paths
+    # if the next cave we choose is node "curr"
+
+    # if current node is end, this is a valid route
+    # add this to counter, and stop recursion
     if curr == 'end':
         return 1
     
+    # if current node is start but we have gone somewhere
+    # (therefore seen is not an empty set), this is invalid
+    # stop recursion
     if curr == 'start' and seen:
         return 0
     
+    # if current node is lowercase but already exists before
     if curr.islower() and curr in seen:
+
+        # check if there is a duplicate entry, if not then
+        # register current node as the duplicate, but continue
+        # the recursion
         if duplicate is None:
             duplicate = curr
-        else:  # another small cave have been visited twice, not counted
+
+        # if another small cave have been visited twice, not counted
+        # stop recursion here, and this doesn't count towards total
+        else:
             return 0
     
+    # add the current node to the set
     seen = seen.union({curr})
     
+    # start counting for recursion case
     output = 0
-    
+
+    # add total output from every possible next route
+    # the current node can have
     for node in routes[curr]:
         output += traverse_two(node, seen, duplicate)
         
