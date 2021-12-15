@@ -8,7 +8,7 @@ with open("data/data13.txt", "r") as file:
 def initialize_data(input_data):
     in_points = [row.split(',') for row in input_data if row != '' and not row.startswith('fold')]
     in_folds = [row.replace('fold along ', '') for row in input_data if row.startswith('fold')]
-    x_max, y_max = max(int(row[0])+1 for row in in_points), max(int(row[1])+1 for row in in_points)
+    x_max, y_max = max(int(row[0]) + 1 for row in in_points), max(int(row[1]) + 1 for row in in_points)
 
     in_matrix = [[0 for col in range(x_max)] for row in range(y_max)]
     for right, down in in_points:
@@ -19,7 +19,7 @@ def initialize_data(input_data):
 
 def fold_up(original_matrix, line):
     new_matrix = [
-        [i+j for i,j in zip(original_matrix[height], original_matrix[2 * line - height])]
+        [i + j for i, j in zip(original_matrix[height], original_matrix[2 * line - height])]
         for height in range(len(original_matrix) // 2)
     ]
     return new_matrix
@@ -34,7 +34,7 @@ def fold_left(original_matrix, line):
 
 
 def get_sum(current_matrix):
-    return sum(sum(row) for row in [list(map(lambda x: x>= 1, curr_row)) for curr_row in current_matrix])
+    return sum(sum(row) for row in [list(map(lambda x: x >= 1, curr_row)) for curr_row in current_matrix])
 
 
 folds, matrix = initialize_data(data)
