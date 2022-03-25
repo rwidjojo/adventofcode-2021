@@ -4,11 +4,13 @@ with open("data/data6.txt", "r") as file:
 problem = data.split(",")
 initial_state = list(map(lambda x: int(x), problem))
 
+
 def convert_state(state):
     counter = {idx: 0 for idx in range(9)}
     for item in state:
         counter[item] += 1
     return counter
+
 
 def move_one_day(prev_counter):
     new_counter = {idx: 0 for idx in range(9)}
@@ -17,8 +19,9 @@ def move_one_day(prev_counter):
             new_counter[8] += value
             new_counter[6] += value
         else:
-            new_counter[idx-1] += value
+            new_counter[idx - 1] += value
     return new_counter
+
 
 # PROBLEM 1
 last_counter = convert_state(initial_state)

@@ -16,12 +16,12 @@ aim = 0
 depth = 0
 horizontal = 0
 for row in prob1:
-    if row[0] == 'forward':
+    if row[0] == "forward":
         horizontal += row[1]
         depth += aim * row[1]
-    elif row[0] == 'up':
+    elif row[0] == "up":
         aim -= row[1]
-    elif row[0] == 'down':
+    elif row[0] == "down":
         aim += row[1]
 
 print(depth * horizontal)

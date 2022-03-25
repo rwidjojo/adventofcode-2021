@@ -1,6 +1,5 @@
 from collections import defaultdict
 
-
 with open("data/data14.txt", "r") as file:
     data = file.read()
 

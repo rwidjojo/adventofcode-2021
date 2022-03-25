@@ -1,13 +1,12 @@
 from itertools import product
 
-
 with open("data/data13.txt", "r") as file:
     data = file.read().split("\n")
 
 
 def initialize_data(input_data):
-    in_points = [row.split(',') for row in input_data if row != '' and not row.startswith('fold')]
-    in_folds = [row.replace('fold along ', '') for row in input_data if row.startswith('fold')]
+    in_points = [row.split(",") for row in input_data if row != "" and not row.startswith("fold")]
+    in_folds = [row.replace("fold along ", "") for row in input_data if row.startswith("fold")]
     x_max, y_max = max(int(row[0]) + 1 for row in in_points), max(int(row[1]) + 1 for row in in_points)
 
     in_matrix = [[0 for col in range(x_max)] for row in range(y_max)]
@@ -26,10 +25,7 @@ def fold_up(original_matrix, line):
 
 
 def fold_left(original_matrix, line):
-    new_matrix = [
-        [row[idx] + row[2 * line - idx] for idx in range(len(row) // 2)]
-        for row in original_matrix
-    ]
+    new_matrix = [[row[idx] + row[2 * line - idx] for idx in range(len(row) // 2)] for row in original_matrix]
     return new_matrix
 
 

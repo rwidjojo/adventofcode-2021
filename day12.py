@@ -1,6 +1,5 @@
 from collections import defaultdict
 
-
 with open("data/data12.txt", "r") as file:
     data = file.read().split("\n")
 
@@ -19,13 +18,13 @@ def traverse_one(curr, seen):
 
     # if current node is end, this is a valid route
     # add this to counter, and stop recursion
-    if curr == 'end':
+    if curr == "end":
         return 1
 
     # if current node is start but we have gone somewhere
     # (therefore seen is not an empty set), this is invalid
     # stop recursion
-    if curr == 'start' and seen:
+    if curr == "start" and seen:
         return 0
 
     # if current node is lowercase but already exists before
@@ -53,13 +52,13 @@ def traverse_two(curr, seen, duplicate):
 
     # if current node is end, this is a valid route
     # add this to counter, and stop recursion
-    if curr == 'end':
+    if curr == "end":
         return 1
 
     # if current node is start but we have gone somewhere
     # (therefore seen is not an empty set), this is invalid
     # stop recursion
-    if curr == 'start' and seen:
+    if curr == "start" and seen:
         return 0
 
     # if current node is lowercase but already exists before
@@ -91,5 +90,5 @@ def traverse_two(curr, seen, duplicate):
 
 
 # PROBLEM 1 and 2
-print(traverse_one('start', set()))
-print(traverse_two('start', set(), None))
+print(traverse_one("start", set()))
+print(traverse_two("start", set(), None))

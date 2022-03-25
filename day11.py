@@ -14,8 +14,8 @@ def initialize_matrix(dataset):
     matrix = [list(row) for row in dataset]
     width = len(matrix[0])
     height = len(matrix)
-    new_matrix = [[[0, False] for _ in range(width+2)] for __ in range(height+2)]
-    for row, col in itertools.product(range(height+2), range(width+2)):
+    new_matrix = [[[0, False] for _ in range(width + 2)] for __ in range(height + 2)]
+    for row, col in itertools.product(range(height + 2), range(width + 2)):
         if row == 0 or row == height + 1 or col == 0 or col == width + 1:
             new_matrix[row][col] = [0, False]
         else:
